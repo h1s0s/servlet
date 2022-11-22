@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--form post메소드로 HTML FORM을 전송하면 content Type은 application/x-www-form-urlencoded로 감
+get방식은 content-type자체가 존재하지 않음-->
+<form action="/request-param" method="post">
+    username: <input type="text" name="username" />
+    age: <input type="text" name="age" />
+    <button type="submit">전송</button>
+</form>
+</body>
+</html>
