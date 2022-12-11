@@ -36,12 +36,17 @@ public class ResponseHeaderServlet extends HttpServlet {
         //이렇게 값을 넣어주지 않았는데 기본적으로 Header에 박혀있는 데이터들은, 톰캣이 알아서 넣어줬기 때문임
 
         //[Header 편의 메서드]
-//        content(response);
+        //        content(response);
+        //cookie(response);
+        redirect(response);
 
         PrintWriter writer = response.getWriter();
         writer.println("안녕하세요.");
     }
 
+    /*
+     * 응답 - 컨텐츠 메서드
+     */
     private void content(HttpServletResponse response) {
         //Content-Type: text/plain;charset=utf-8
         //Content-Length: 2
@@ -51,11 +56,27 @@ public class ResponseHeaderServlet extends HttpServlet {
         //response.setContentLength(2); //(생략시 자동 생성) - 바디 글자 길이값
     }
 
+    /*
+     * 응답 - 쿠키 메서드
+     */
     private void cookie(HttpServletResponse response) {
         //Set-Cookie: myCookie=good; Max-Age=600;
         //response.setHeader("Set-Cookie", "myCookie=good; Max-Age=600");
         Cookie cookie = new Cookie("myCookie", "good");
         cookie.setMaxAge(600); //600초
         response.addCookie(cookie);
+    }
+
+    /*
+     * 응답 - 리다이렉트 메서드
+     */
+    private void redirect(HttpServletResponse response) throws IOException {
+        //Status Code 302
+        //Location: /basic/hello-form.html
+
+        //response.setStatus(HttpServletResponse.SC_FOUND); //302
+        //response.setHeader("Location", "/basic/hello-form.html");
+
+        response.sendRedirect("/basic/hello-form.html");
     }
 }
