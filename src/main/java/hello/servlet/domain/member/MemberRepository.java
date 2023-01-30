@@ -18,6 +18,8 @@ import java.util.Map;
  */
 public class MemberRepository {
 
+    /* 싱글톤 패턴으로 1개의 객체만 메모리에 생성되고 유지됨 */
+
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
 
