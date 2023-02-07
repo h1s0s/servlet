@@ -34,13 +34,13 @@ public class FrontControllerServletV4 extends HttpServlet {
         Map<String, Object> model = new HashMap<>(); //추가
         String viewName = controller.process(paramMap, model);
         MyView view = viewResolver(viewName);
-//        view.render(model, request, response);
+        view.render(model, request, response);
     }
     private Map<String, String> createParamMap(HttpServletRequest request) {
         Map<String, String> paramMap = new HashMap<>();
-//        request.getParameterNames().asIterator()
-//                .forEachRemaining(paramName -> paramMap.put(paramName,
-//                        request.getParameter(paramName)));
+        request.getParameterNames().asIterator()
+                .forEachRemaining(paramName -> paramMap.put(paramName,
+                        request.getParameter(paramName)));
         return paramMap;
     }
     private MyView viewResolver(String viewName) {
